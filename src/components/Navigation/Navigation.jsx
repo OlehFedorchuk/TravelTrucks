@@ -7,18 +7,22 @@ import clsx from "clsx";
 import css from "./Navigation.module.css";
 
 const Navigation = () => {
-  // const buildLinkClass = ({ isActive }) => {
-  //   console.log("isActive", isActive);
-  //   return clsx(css.link, isActive && css.active);
-  // };
+  const buildLinkClass = ({ isActive }) => {
+    console.log("isActive", isActive);
+    return clsx(css.link, isActive && css.active);
+  };
 
   return (
     <>
       <header className={clsx(css.header)}>
         <nav>
           <span className={clsx(css.logo)}>TrevelTrucks</span>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/catalog">Catalog</NavLink>
+          <NavLink to="/" className={buildLinkClass}>
+            Home
+          </NavLink>
+          <NavLink to="/catalog" className={buildLinkClass}>
+            Catalog
+          </NavLink>
           <NavLink to="/catalog/:id">Details</NavLink>
         </nav>
       </header>

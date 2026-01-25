@@ -1,0 +1,86 @@
+/* Загальний контейнер */
+.filters {
+    margin-top: 24px;
+    max-width: 360px;
+
+}
+
+/* Заголовок */
+.title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 24px;
+
+}
+
+/* Сітка 3 в ряд */
+.grid {
+    width: 360px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+}
+
+/* Кнопка-плитка */
+.item {
+    aspect-ratio: 1 / 1;
+    border: 1px solid #d0d5dd;
+    border-radius: 12px;
+    background: #fff;
+    width: 112px;
+    height: 96px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    cursor: pointer;
+    user-select: none;
+
+    transition: border-color 0.2s ease;
+}
+
+/* Активний стан */
+.itemActive {
+    border-color: #e44848;
+}
+
+/* Іконка */
+.icon {
+
+    font-size: 28px;
+    /* для MUI іконок */
+    color: #101828;
+}
+
+/* Текст */
+.label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #101828;
+}
+
+/* Hover */
+/* .item:hover {
+    border-color: #98a2b3;
+} */
+
+/* Адаптив */
+/* @media (max-width: 480px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+} */
+
+.line {
+    margin-bottom: 24px;
+}
+
+.wrapEquipment {
+    margin-bottom: 32px;
+}

@@ -15,3 +15,14 @@
     font-weight: 800;
 
 }
+
+.link {
+    text-decoration: none;
+    color: #101828;
+    font-weight: 500;
+}
+
+.active {
+    color: #D84343;
+
+}
