@@ -1,0 +1,17 @@
+.header nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    background-color: #F2F4F7;
+    height: 72px;
+    align-items: center;
+
+
+}
+
+
+.logo {
+    color: #101828;
+    font-weight: 800;
+
+}

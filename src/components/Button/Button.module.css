@@ -1,0 +1,12 @@
+.heroBtn {
+    background-color: #E44848;
+    width: 165px;
+    height: 56px;
+    border-radius: 200px;
+    border: none;
+    cursor: pointer;
+}
+
+.heroBtn:hover {
+    background-color: #d6170d;
+}
