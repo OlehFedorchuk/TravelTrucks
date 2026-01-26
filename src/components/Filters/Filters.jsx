@@ -11,6 +11,7 @@ import VanIcon from "../../assets/icons/van.svg?react";
 import FullyIntegratedIcon from "../../assets/icons/fullyIntegrated.svg?react";
 import AlcoveIcon from "../../assets/icons/alcove.svg?react";
 import LineIcon from "../../assets/icons/line.svg?react";
+import Button from "../Button/Button";
 
 const Filters = () => {
   const [active, setActive] = useState({
@@ -31,6 +32,7 @@ const Filters = () => {
     <section className={css.filters}>
       <Location />
       <div className={clsx(css.wrapEquipment)}>
+        <p className={clsx(css.titleFilters)}>Filters</p>
         <h3 className={css.title}>Vehicle equipment</h3>
         <LineIcon className={clsx(css.line)} />
         <ul className={css.grid}>
@@ -87,7 +89,7 @@ const Filters = () => {
           </li>
         </ul>
       </div>
-      <div>
+      <div className={clsx(css.wrapType)}>
         {" "}
         <h3 className={css.title}>Vehicle Type</h3>
         <LineIcon className={clsx(css.line)} />
@@ -124,6 +126,7 @@ const Filters = () => {
           </li>
         </ul>
       </div>
+      <Button className={clsx(css.searchBtn)}>Search</Button>
     </section>
   );
 };

@@ -8,7 +8,7 @@ import css from "./Navigation.module.css";
 
 const Navigation = () => {
   const buildLinkClass = ({ isActive }) => {
-    console.log("isActive", isActive);
+    // console.log("isActive", isActive);
     return clsx(css.link, isActive && css.active);
   };
 
@@ -23,7 +23,7 @@ const Navigation = () => {
           <NavLink to="/catalog" className={buildLinkClass}>
             Catalog
           </NavLink>
-          <NavLink to="/catalog/:id">Details</NavLink>
+          {/* <NavLink to="/catalog/:id">Details</NavLink> */}
         </nav>
       </header>
 

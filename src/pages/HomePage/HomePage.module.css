@@ -21,19 +21,19 @@
     margin-right: auto;
 }
 
-h1 {
+.mainText {
     font-size: 48px;
     font-weight: 600;
     line-height: 32px;
 
 }
 
-p {
+.geroyDesc {
     font-size: 24px;
     line-height: 32px;
     font-weight: 600;
 }
 
-.heroiBtn {
+.heroyBtn {
     color: #F7F7F7;
 }

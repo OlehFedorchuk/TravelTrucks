@@ -1,10 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { fetchCars } from "./carsOps";
-import { createSelector } from "@reduxjs/toolkit";
+import { createSlice, createSelector } from "@reduxjs/toolkit";
+import { fetchById, fetchCars } from "./carsOps";
+
+export const selectCarsLoading = (state) => state.cars.loading;
+export const selectCarsError = (state) => state.cars.error;
+
 const initialState = {
   data: {
     items: [],
-    total: 0,
+    selectedCar: null,
   },
   loading: false,
   error: null,
@@ -26,13 +29,25 @@ const carsSlice = createSlice({
       .addCase(fetchCars.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      .addCase(fetchById.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchById.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data.selectedCar = action.payload;
+      })
+      .addCase(fetchById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
   },
 });
 const selecrCarsData = (state) => state.cars.data;
 export const selectItemsArray = createSelector(
   [selecrCarsData],
-  (data) => data?.items?.items ?? [],
+  (data) => data.items.items ?? [],
 );
 
 export const carsReducer = carsSlice.reducer;

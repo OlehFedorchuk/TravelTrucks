@@ -56,12 +56,23 @@
 }
 
 .rating {
-    margin: 10px 0 0;
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+    /* margin: 10px 0 0; */
+    color: #101828;
+
 }
 
+
 .desc {
-    margin: 16px 0;
-    color: #475467;
+    /* margin: 16px 0; */
+    width: 525px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    color: #475467
 }
 
 .features {
@@ -78,6 +89,30 @@
     align-items: center;
     gap: 8px;
     padding: 10px 16px;
-    background: #f2f4f7;
+    background-color: #f2f4f7;
     border-radius: 999px;
+}
+
+.autoIcon {
+    width: 20px;
+    height: 20px;
+}
+
+.kitchenIcon {
+    width: 20px;
+    height: 20px;
+}
+
+.acIcon {
+    width: 20px;
+    height: 20px;
+}
+
+.starIcon {
+    margin-right: 4px;
+}
+
+.mapIcon {
+    margin-left: 16px;
+    margin-right: 4px;
 }

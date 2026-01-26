@@ -2,9 +2,16 @@ import clsx from "clsx";
 import css from "./Card.module.css";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import Button from "../Button/Button";
-
+import AutoIcon from "../../assets/icons/automatic.svg?react";
+import PertolIcon from "../../assets/icons/petrol.svg?react";
+import KitchenIcon from "../../assets/icons/kitchen.svg?react";
+import AcIcon from "../../assets/icons/ac.svg?react";
+import StarIcon from "../../assets/icons/star.svg?react";
+import MapIcon from "../../assets/icons/map.svg?react";
+import { Link } from "react-router-dom";
 const Card = ({ data }) => {
   const {
+    id,
     name,
     price,
     kitchen,
@@ -13,6 +20,7 @@ const Card = ({ data }) => {
     AC,
     description,
     rating,
+    location,
     reviews = [],
     gallery = [],
   } = data;
@@ -44,18 +52,39 @@ const Card = ({ data }) => {
         </div>
 
         <p className={css.rating}>
-          {rating} ({reviews.length} Reviews)
+          <StarIcon className={clsx(css.starIcon)} />
+          {rating}({reviews.length} Reviews)
+          <MapIcon className={clsx(css.mapIcon)} />
+          {location}
         </p>
 
         <p className={css.desc}>{description}</p>
 
         <ul className={css.features}>
-          <li className={css.feature}>{transmission}</li>
-          <li className={css.feature}>{engine}</li>
-          {kitchen && <li className={css.feature}>Kitchen</li>}
-          {AC && <li className={css.feature}>AC</li>}
+          <li className={css.feature}>
+            <AutoIcon className={clsx(css.autoIcon)} />
+            {transmission}
+          </li>
+          <li className={css.feature}>
+            <PertolIcon />
+            {engine}
+          </li>
+          {kitchen && (
+            <li className={css.feature}>
+              <KitchenIcon className={clsx(css.kitchenIcon)} />
+              Kitchen
+            </li>
+          )}
+          {AC && (
+            <li className={css.feature}>
+              <AcIcon className={clsx(css.acIcon)} />
+              AC
+            </li>
+          )}
         </ul>
-        <Button>Show more</Button>
+        <Link to={`/catalog/${id}`}>
+          <Button>Show more</Button>
+        </Link>
       </div>
     </li>
   );

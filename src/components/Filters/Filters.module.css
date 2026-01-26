@@ -1,11 +1,9 @@
-/* Загальний контейнер */
 .filters {
     margin-top: 24px;
     max-width: 360px;
 
 }
 
-/* Заголовок */
 .title {
     font-size: 20px;
     font-weight: 600;
@@ -13,7 +11,6 @@
 
 }
 
-/* Сітка 3 в ряд */
 .grid {
     width: 360px;
     display: grid;
@@ -25,7 +22,7 @@
 
 }
 
-/* Кнопка-плитка */
+
 .item {
     aspect-ratio: 1 / 1;
     border: 1px solid #d0d5dd;
@@ -50,15 +47,11 @@
     border-color: #e44848;
 }
 
-/* Іконка */
 .icon {
-
     font-size: 28px;
-    /* для MUI іконок */
     color: #101828;
 }
 
-/* Текст */
 .label {
     font-size: 14px;
     font-weight: 600;
@@ -83,4 +76,14 @@
 
 .wrapEquipment {
     margin-bottom: 32px;
+}
+
+.wrapType {
+    margin-bottom: 40px;
+}
+
+.titleFilters {
+    font-size: 16px;
+    line-height: 24px;
+    color: #475467;
 }
