@@ -3,7 +3,7 @@ import css from "./Card.module.css";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import Button from "../Button/Button";
 import AutoIcon from "../../assets/icons/automatic.svg?react";
-import PertolIcon from "../../assets/icons/petrol.svg?react";
+import PetrolIcon from "../../assets/icons/petrol.svg?react";
 import KitchenIcon from "../../assets/icons/kitchen.svg?react";
 import AcIcon from "../../assets/icons/ac.svg?react";
 import StarIcon from "../../assets/icons/star.svg?react";
@@ -66,7 +66,7 @@ const Card = ({ data }) => {
             {transmission}
           </li>
           <li className={css.feature}>
-            <PertolIcon />
+            <PetrolIcon />
             {engine}
           </li>
           {kitchen && (
