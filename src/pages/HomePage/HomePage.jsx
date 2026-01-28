@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import Button from "../../components/Button/Button";
 import css from "./HomePage.module.css";
+import { Link } from "react-router-dom";
 const HomePage = () => {
   return (
     <section className={clsx(css.geroy)}>
@@ -9,7 +10,9 @@ const HomePage = () => {
         <p className={clsx(css.geroyDesc)}>
           You can find everything you want in our catalog
         </p>
-        <Button className={clsx(css.heroyBtn)}>View New</Button>
+        <Link to={"/catalog/"}>
+          <Button className={clsx(css.heroyBtn)}>View New</Button>
+        </Link>
       </div>
     </section>
   );
