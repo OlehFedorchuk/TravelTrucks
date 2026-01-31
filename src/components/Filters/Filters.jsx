@@ -12,6 +12,7 @@ import FullyIntegratedIcon from "../../assets/icons/fullyIntegrated.svg?react";
 import AlcoveIcon from "../../assets/icons/alcove.svg?react";
 import LineIcon from "../../assets/icons/line.svg?react";
 import Button from "../Button/Button";
+import { applyFilters } from "../../redux/carsSlice";
 
 import {
   toggleEquipment,
@@ -25,6 +26,14 @@ const Filters = () => {
   const dispatch = useDispatch();
   const equipment = useSelector(selectEquipmentFilters);
   const bodyType = useSelector(selectBodyType);
+
+const filters = useSelector((state) => state.filters);
+
+const handleSearch = () => {
+  dispatch(applyFilters(filters));
+  dispatch(clearFilters());      
+  document.activeElement?.blur();
+};
 
   return (
     <section className={css.filters}>
@@ -136,9 +145,9 @@ const Filters = () => {
       <Button
         className={clsx(css.searchBtn)}
         type="button"
-        onClick={() => dispatch(clearFilters())}
+        onClick={handleSearch}
       >
-        Clear
+        Search
       </Button>
     </section>
   );
