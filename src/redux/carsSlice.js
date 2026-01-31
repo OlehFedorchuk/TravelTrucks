@@ -23,6 +23,8 @@ const initialState = {
   error: null,
 
   appliedFilters: emptyFilters(),
+
+  isApplied: false,
 };
 
 const carsSlice = createSlice({
@@ -31,16 +33,19 @@ const carsSlice = createSlice({
   reducers: {
     applyFilters(state, action) {
       state.appliedFilters = structuredClone(action.payload);
+      state.isApplied = true;
     },
 
     clearAppliedFilters(state) {
       state.appliedFilters = emptyFilters();
+      state.isApplied = false;
     },
 
     clearCars(state) {
       state.data.items = [];
       state.data.total = 0;
       state.error = null;
+      //state.isApplied = false; // якщо хочеш — можеш теж скидати
     },
   },
   extraReducers: (builder) => {
@@ -59,13 +64,11 @@ const carsSlice = createSlice({
           state.data.total = payload.length;
           return;
         }
-
         if (payload && Array.isArray(payload.items)) {
           state.data.items = payload.items;
           state.data.total = payload.total ?? payload.items.length;
           return;
         }
-
 
         state.data.items = [];
         state.data.total = 0;
@@ -94,30 +97,28 @@ export const carsReducer = carsSlice.reducer;
 export const { applyFilters, clearAppliedFilters, clearCars } = carsSlice.actions;
 export const selectCarsLoading = (state) => state.cars.loading;
 export const selectCarsError = (state) => state.cars.error;
+
 export const selectItemsArray = (state) => {
   const items = state.cars?.data?.items;
   return Array.isArray(items) ? items : [];
 };
 
 export const selectAppliedFilters = (state) => state.cars.appliedFilters;
-
+export const selectIsApplied = (state) => state.cars.isApplied;
 export const selectVisibleCars = createSelector(
   [selectItemsArray, selectAppliedFilters],
   (items, filters) => {
     const { location, bodyType, equipment } = filters;
-
     const q = location.trim().toLowerCase();
 
     return items.filter((item) => {
       const okLocation = !q
         ? true
         : (item.location || "").toLowerCase().includes(q);
-
       const itemBodyType = item.form || item.type || item.vehicleType || "";
       const okBodyType = !bodyType
         ? true
         : normalizeType(itemBodyType) === normalizeType(bodyType);
-
 
       const activeEq = Object.keys(equipment).filter((k) => equipment[k]);
       const okEquipment =

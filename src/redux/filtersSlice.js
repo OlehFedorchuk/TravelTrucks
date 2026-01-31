@@ -44,6 +44,7 @@ export const {
 } = filtersSlice.actions;
 
 export const filtersReducer = filtersSlice.reducer;
+export const selectFilters = (state) => state.filters;
 
 export const selectLocationFilter = (state) => state.filters.location;
 export const selectBodyType = (state) => state.filters.bodyType;

@@ -11,8 +11,14 @@ import VanIcon from "../../assets/icons/van.svg?react";
 import FullyIntegratedIcon from "../../assets/icons/fullyIntegrated.svg?react";
 import AlcoveIcon from "../../assets/icons/alcove.svg?react";
 import LineIcon from "../../assets/icons/line.svg?react";
+
 import Button from "../Button/Button";
-import { applyFilters } from "../../redux/carsSlice";
+
+import {
+  applyFilters,
+  clearAppliedFilters,
+  selectIsApplied,
+} from "../../redux/carsSlice";
 
 import {
   toggleEquipment,
@@ -20,20 +26,27 @@ import {
   selectEquipmentFilters,
   selectBodyType,
   clearFilters,
+  selectFilters, 
 } from "../../redux/filtersSlice";
 
 const Filters = () => {
   const dispatch = useDispatch();
+
   const equipment = useSelector(selectEquipmentFilters);
   const bodyType = useSelector(selectBodyType);
+  const filters = useSelector(selectFilters); // або: useSelector((state) => state.filters)
+  const isApplied = useSelector(selectIsApplied);
 
-const filters = useSelector((state) => state.filters);
+  const handleClick = () => {
+    if (!isApplied) {
+      dispatch(applyFilters(filters));
+      dispatch(clearFilters());
+    } else {
+      dispatch(clearAppliedFilters());
+    }
 
-const handleSearch = () => {
-  dispatch(applyFilters(filters));
-  dispatch(clearFilters());      
-  document.activeElement?.blur();
-};
+    document.activeElement?.blur();
+  };
 
   return (
     <section className={css.filters}>
@@ -121,7 +134,10 @@ const handleSearch = () => {
           <li>
             <button
               type="button"
-              className={clsx(css.item, bodyType === "FullyIntegrated" && css.itemActive)}
+              className={clsx(
+                css.item,
+                bodyType === "FullyIntegrated" && css.itemActive
+              )}
               onClick={() => dispatch(setBodyType("FullyIntegrated"))}
             >
               <FullyIntegratedIcon className={css.icon} />
@@ -145,9 +161,9 @@ const handleSearch = () => {
       <Button
         className={clsx(css.searchBtn)}
         type="button"
-        onClick={handleSearch}
+        onClick={handleClick}
       >
-        Search
+        {isApplied ? "Clear" : "Search"}
       </Button>
     </section>
   );
