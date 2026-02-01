@@ -45,7 +45,7 @@ const carsSlice = createSlice({
       state.data.items = [];
       state.data.total = 0;
       state.error = null;
-      //state.isApplied = false; // якщо хочеш — можеш теж скидати
+      
     },
   },
   extraReducers: (builder) => {

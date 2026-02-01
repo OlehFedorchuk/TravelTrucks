@@ -34,7 +34,7 @@ const Filters = () => {
 
   const equipment = useSelector(selectEquipmentFilters);
   const bodyType = useSelector(selectBodyType);
-  const filters = useSelector(selectFilters); // або: useSelector((state) => state.filters)
+  const filters = useSelector(selectFilters); 
   const isApplied = useSelector(selectIsApplied);
 
   const handleClick = () => {

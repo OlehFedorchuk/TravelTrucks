@@ -6,7 +6,6 @@ import { setLocationFilter, selectLocationFilter } from "../../redux/filtersSlic
 const Location = () => {
   const dispatch = useDispatch();
   const value = useSelector(selectLocationFilter);
-
   return (
     <section className={css.location}>
       <h3 className={css.title}>Location</h3>

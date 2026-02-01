@@ -1,14 +1,12 @@
 .filters {
     margin-top: 24px;
     max-width: 360px;
-
 }
 
 .title {
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 24px;
-
 }
 
 .grid {
@@ -19,7 +17,6 @@
     padding: 0;
     margin: 0;
     list-style: none;
-
 }
 
 
@@ -35,14 +32,11 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-
     cursor: pointer;
     user-select: none;
-
     transition: border-color 0.2s ease;
 }
 
-/* Активний стан */
 .itemActive {
     border-color: #e44848;
 }
@@ -58,17 +52,6 @@
     color: #101828;
 }
 
-/* Hover */
-/* .item:hover {
-    border-color: #98a2b3;
-} */
-
-/* Адаптив */
-/* @media (max-width: 480px) {
-    .grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-} */
 
 .line {
     margin-bottom: 24px;

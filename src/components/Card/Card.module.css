@@ -59,14 +59,12 @@
     display: flex;
     align-items: center;
     margin-right: 16px;
-    /* margin: 10px 0 0; */
     color: #101828;
 
 }
 
 
 .desc {
-    /* margin: 16px 0; */
     width: 525px;
     white-space: nowrap;
     overflow: hidden;

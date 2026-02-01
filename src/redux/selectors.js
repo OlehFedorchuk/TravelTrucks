@@ -1,5 +1,5 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { selectAppliedFilters } from "./carsSlice"; // ✅ новий селектор
+import { selectAppliedFilters } from "./carsSlice"; 
 
 export const selectItemsArray = (state) => {
   const items = state.cars?.data?.items;
