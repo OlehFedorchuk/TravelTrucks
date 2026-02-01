@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import clsx from "clsx";
@@ -17,7 +17,6 @@ import RefrigeratorIcon from "../../assets/icons/refrigerator.svg?react";
 import MicrowaveIcon from "../../assets/icons/microwave.svg?react";
 import WaterIcon from "../../assets/icons/water.svg?react";
 import GasIcon from "../../assets/icons/gas.svg?react";
-import { useRef } from "react";
 
 const selectSelectedCar = (state) => state.cars.data.selectedCar;
 
@@ -25,9 +24,8 @@ const DetailsPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-
-const dateRef = useRef(null);
-const [isDateFocused, setIsDateFocused] = useState(false);
+  const dateRef = useRef(null);
+  const [isDateFocused, setIsDateFocused] = useState(false);
   const tabRaw = useSelector((state) => state.tab);
   const tab = typeof tabRaw === "string" ? tabRaw : tabRaw?.value;
 
@@ -52,7 +50,8 @@ const [isDateFocused, setIsDateFocused] = useState(false);
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [notice, setNotice] = useState(null); 
+  const [notice, setNotice] = useState(null);
+
   const FEATURE_ICONS = useMemo(
     () => ({
       transmission: AutoIcon,
@@ -66,7 +65,7 @@ const [isDateFocused, setIsDateFocused] = useState(false);
       water: WaterIcon,
       gas: GasIcon,
     }),
-    [],
+    []
   );
 
   const minDate = useMemo(() => {
@@ -76,7 +75,6 @@ const [isDateFocused, setIsDateFocused] = useState(false);
     const dd = String(d.getDate()).padStart(2, "0");
     return `${yyyy}-${mm}-${dd}`;
   }, []);
-
 
   useEffect(() => {
     dispatch(setTab("features"));
@@ -213,7 +211,10 @@ const [isDateFocused, setIsDateFocused] = useState(false);
   const handleBlur = (e) => {
     const { name: fieldName, value } = e.target;
     setTouched((prev) => ({ ...prev, [fieldName]: true }));
-    setErrors((prev) => ({ ...prev, [fieldName]: validateField(fieldName, value) }));
+    setErrors((prev) => ({
+      ...prev,
+      [fieldName]: validateField(fieldName, value),
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -231,9 +232,7 @@ const [isDateFocused, setIsDateFocused] = useState(false);
 
     try {
       setIsSubmitting(true);
-
       await new Promise((res) => setTimeout(res, 700));
-
       setNotice({
         type: "success",
         text: "✅ Camper successfully booked! We will contact you soon.",
@@ -254,7 +253,6 @@ const [isDateFocused, setIsDateFocused] = useState(false);
   return (
     <section className={css.page}>
       <div className={css.container}>
-        {/* HEADER */}
         <header className={css.header}>
           <h1 className={css.title}>{name}</h1>
 
@@ -277,7 +275,6 @@ const [isDateFocused, setIsDateFocused] = useState(false);
           <p className={css.price}>€{Number(price).toFixed(2)}</p>
         </header>
 
-        {/* GALLERY */}
         <div className={css.gallery}>
           {photos.map((src, idx) => (
             <div key={idx} className={css.photoWrap}>
@@ -286,10 +283,8 @@ const [isDateFocused, setIsDateFocused] = useState(false);
           ))}
         </div>
 
-        {/* DESCRIPTION */}
         <p className={css.description}>{description}</p>
 
-        {/* TABS */}
         <div className={css.tabs}>
           <button
             type="button"
@@ -309,9 +304,7 @@ const [isDateFocused, setIsDateFocused] = useState(false);
         </div>
         <div className={css.tabsLine} />
 
-        {/* MAIN */}
         <div className={css.main}>
-          {/* LEFT */}
           <div className={css.leftCard}>
             {tab === "features" ? (
               <>
@@ -373,7 +366,6 @@ const [isDateFocused, setIsDateFocused] = useState(false);
             )}
           </div>
 
-          {/* RIGHT */}
           <aside className={css.rightCard}>
             <h2 className={css.formTitle}>Book your campervan now</h2>
             <p className={css.formSubtitle}>
@@ -381,10 +373,12 @@ const [isDateFocused, setIsDateFocused] = useState(false);
             </p>
 
             <form className={css.form} onSubmit={handleSubmit} noValidate>
-              {/* NAME */}
               <div className={css.control}>
                 <input
-                  className={clsx(css.input, errors.name && touched.name && css.inputError)}
+                  className={clsx(
+                    css.input,
+                    errors.name && touched.name && css.inputError
+                  )}
                   type="text"
                   name="name"
                   placeholder="Name*"
@@ -399,10 +393,12 @@ const [isDateFocused, setIsDateFocused] = useState(false);
                 )}
               </div>
 
-              {/* EMAIL */}
               <div className={css.control}>
                 <input
-                  className={clsx(css.input, errors.email && touched.email && css.inputError)}
+                  className={clsx(
+                    css.input,
+                    errors.email && touched.email && css.inputError
+                  )}
                   type="email"
                   name="email"
                   placeholder="Email*"
@@ -417,50 +413,48 @@ const [isDateFocused, setIsDateFocused] = useState(false);
                 )}
               </div>
 
-         {/* DATE */}
-<div className={css.control}>
- <div
-  className={css.dateWrap}
-  onClick={() => dateRef.current?.showPicker?.()}
->
-  {!formData.date && !isDateFocused && (
-    <span className={css.datePlaceholder}>Booking date*</span>
-  )}
+              <div className={css.control}>
+                <div
+                  className={css.dateWrap}
+                  onClick={() => dateRef.current?.showPicker?.()}
+                >
+                  {!formData.date && !isDateFocused && (
+                    <span className={css.datePlaceholder}>Booking date*</span>
+                  )}
 
-  <input
-    ref={dateRef}
-    className={clsx(
-      css.input,
-      css.dateInput,
-      errors.date && touched.date && css.inputError
-    )}
-    type="date"
-    name="date"
-    value={formData.date}
-    onChange={handleChange}
-    onFocus={() => setIsDateFocused(true)}   
-    onBlur={() => setIsDateFocused(false)}   
-    min={minDate}
-    disabled={isSubmitting}
-    required
-  />
-</div>
+                  <input
+                    ref={dateRef}
+                    className={clsx(
+                      css.input,
+                      css.dateInput,
+                      errors.date && touched.date && css.inputError
+                    )}
+                    type="date"
+                    name="date"
+                    value={formData.date}
+                    onChange={handleChange}
+                    onFocus={() => setIsDateFocused(true)}
+                    onBlur={() => setIsDateFocused(false)}
+                    min={minDate}
+                    disabled={isSubmitting}
+                    required
+                  />
+                </div>
 
+                {touched.date && errors.date && (
+                  <p className={css.errorText}>{errors.date}</p>
+                )}
+              </div>
 
-  {touched.date && errors.date && (
-    <p className={css.errorText}>{errors.date}</p>
-  )}
-</div>
-{/* COMMENT */}
-<textarea
-  className={css.textarea}
-  name="comment"
-  placeholder="Comment"
-  rows={4}
-  value={formData.comment}
-  onChange={handleChange}
-  disabled={isSubmitting}
-/>
+              <textarea
+                className={css.textarea}
+                name="comment"
+                placeholder="Comment"
+                rows={4}
+                value={formData.comment}
+                onChange={handleChange}
+                disabled={isSubmitting}
+              />
 
               <button className={css.submit} type="submit" disabled={isSubmitting}>
                 {isSubmitting ? "Booking..." : "Send"}
@@ -470,7 +464,9 @@ const [isDateFocused, setIsDateFocused] = useState(false);
                 <div
                   className={clsx(
                     css.notice,
-                    notice.type === "success" ? css.noticeSuccess : css.noticeError,
+                    notice.type === "success"
+                      ? css.noticeSuccess
+                      : css.noticeError
                   )}
                   role="status"
                   aria-live="polite"
@@ -487,3 +483,4 @@ const [isDateFocused, setIsDateFocused] = useState(false);
 };
 
 export default DetailsPage;
+

@@ -1,5 +1,5 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { selectAppliedFilters } from "./carsSlice"; 
+import { selectAppliedFilters } from "./carsSlice";
 
 export const selectItemsArray = (state) => {
   const items = state.cars?.data?.items;
@@ -10,7 +10,6 @@ export const selectVisibleCars = createSelector(
   [selectItemsArray, selectAppliedFilters],
   (items, filters) => {
     const { location, bodyType, equipment } = filters;
-
     const q = location.trim().toLowerCase();
 
     return items.filter((item) => {
@@ -24,7 +23,9 @@ export const selectVisibleCars = createSelector(
 
       const activeEq = Object.keys(equipment).filter((k) => equipment[k]);
       const okEquipment =
-        activeEq.length === 0 ? true : activeEq.every((k) => matchEquipment(item, k));
+        activeEq.length === 0
+          ? true
+          : activeEq.every((k) => matchEquipment(item, k));
 
       return okLocation && okBodyType && okEquipment;
     });

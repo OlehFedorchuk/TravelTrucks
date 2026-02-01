@@ -1,5 +1,28 @@
-.list {
-    list-style: none;
-    padding-right: auto;
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.loadMore {
+  margin: 40px auto 52px;
+  padding: 14px 32px;
+  border-radius: 999px;
+  border: 1px solid rgba(16, 24, 40, 0.2);
+  background: transparent;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.message {
+  margin: 0 0 16px;
+  text-align: center;
+  opacity: 0.85;
 }

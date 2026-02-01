@@ -17,8 +17,12 @@ import Button from "../Button/Button";
 import {
   applyFilters,
   clearAppliedFilters,
+  resetCars,
   selectIsApplied,
+  selectCarsLimit,
 } from "../../redux/carsSlice";
+
+import { fetchCars } from "../../redux/carsOps";
 
 import {
   toggleEquipment,
@@ -26,7 +30,7 @@ import {
   selectEquipmentFilters,
   selectBodyType,
   clearFilters,
-  selectFilters, 
+  selectFilters,
 } from "../../redux/filtersSlice";
 
 const Filters = () => {
@@ -34,15 +38,21 @@ const Filters = () => {
 
   const equipment = useSelector(selectEquipmentFilters);
   const bodyType = useSelector(selectBodyType);
-  const filters = useSelector(selectFilters); 
+  const filters = useSelector(selectFilters);
+
   const isApplied = useSelector(selectIsApplied);
+  const limit = useSelector(selectCarsLimit);
 
   const handleClick = () => {
     if (!isApplied) {
       dispatch(applyFilters(filters));
-      dispatch(clearFilters());
+      dispatch(resetCars());
+      dispatch(fetchCars({ page: 1, limit }));
     } else {
+      dispatch(clearFilters());
       dispatch(clearAppliedFilters());
+      dispatch(resetCars());
+      dispatch(fetchCars({ page: 1, limit }));
     }
 
     document.activeElement?.blur();
