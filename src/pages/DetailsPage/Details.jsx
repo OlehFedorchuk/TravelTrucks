@@ -339,6 +339,7 @@ const DetailsPage = () => {
                 ) : (
                   <ul className={css.reviewsList}>
                     {reviews.map((r, idx) => {
+                      console.log('reviews', reviews)
                       const rating5 = clampRating(r?.reviewer_rating);
                       const stars = "★".repeat(rating5) + "☆".repeat(5 - rating5);
                       const initial = (r?.reviewer_name?.[0] || "?").toUpperCase();

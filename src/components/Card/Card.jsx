@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import css from "./Card.module.css";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import Button from "../Button/Button";
 import AutoIcon from "../../assets/icons/automatic.svg?react";
 import PetrolIcon from "../../assets/icons/petrol.svg?react";
@@ -9,7 +10,15 @@ import AcIcon from "../../assets/icons/ac.svg?react";
 import StarIcon from "../../assets/icons/star.svg?react";
 import MapIcon from "../../assets/icons/map.svg?react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  toggleFavorite,
+  selectIsFavoriteById,
+} from "../../redux/favoritesSlice";
+
 const Card = ({ data }) => {
+  const dispatch = useDispatch();
+
   const {
     id,
     name,
@@ -24,6 +33,14 @@ const Card = ({ data }) => {
     reviews = [],
     gallery = [],
   } = data;
+
+  const isFavorite = useSelector(selectIsFavoriteById(id));
+
+  const handleToggleFavorite = (e) => {
+    e.preventDefault(); 
+    e.stopPropagation();
+    dispatch(toggleFavorite(id));
+  };
 
   return (
     <li className={clsx(css.item)}>
@@ -40,20 +57,26 @@ const Card = ({ data }) => {
 
           <div className={css.priceBlock}>
             <span className={css.price}>€{price}.00</span>
-
             <button
               type="button"
-              className={css.favBtn}
-              aria-label="Add to favorites"
+              className={clsx(css.favBtn, isFavorite && css.favBtnActive)}
+              aria-label={
+                isFavorite ? "Remove from favorites" : "Add to favorites"
+              }
+              onClick={handleToggleFavorite}
             >
-              <FavoriteBorderOutlinedIcon className={css.favIcon} />
+              {isFavorite ? (
+                <FavoriteOutlinedIcon className={css.favIconActive} />
+              ) : (
+                <FavoriteBorderOutlinedIcon className={css.favIcon} />
+              )}
             </button>
           </div>
         </div>
 
         <p className={css.rating}>
           <StarIcon className={clsx(css.starIcon)} />
-          {rating}({reviews.length} Reviews)
+          {rating} ({reviews.length} Reviews)
           <MapIcon className={clsx(css.mapIcon)} />
           {location}
         </p>
@@ -69,12 +92,14 @@ const Card = ({ data }) => {
             <PetrolIcon />
             {engine}
           </li>
+
           {kitchen && (
             <li className={css.feature}>
               <KitchenIcon className={clsx(css.kitchenIcon)} />
               Kitchen
             </li>
           )}
+
           {AC && (
             <li className={css.feature}>
               <AcIcon className={clsx(css.acIcon)} />
@@ -82,6 +107,7 @@ const Card = ({ data }) => {
             </li>
           )}
         </ul>
+
         <Link to={`/catalog/${id}`}>
           <Button>Show more</Button>
         </Link>
