@@ -98,7 +98,7 @@ src/
 ⚙️ Installation & Run
 
 1️⃣ Clone the repository
-git clone https://github.com/your-username/traveltrucks.git
+git clone https://github.com/OlehFedorchuk/TravelTrucks.git
 
 2️⃣ Navigate to the project folder
 cd traveltrucks
