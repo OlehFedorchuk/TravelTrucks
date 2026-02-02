@@ -39,53 +39,56 @@ The project is built using React, Redux Toolkit, and Vite.
 
 ⸻
 
-📂 Project Structure
+## 📂 Project Structure
+
+```text
 src/
 ├── App.jsx
 ├── assets
-│ ├── icons
-│ │ ├── ac.svg
-│ │ ├── alcove.svg
-│ │ ├── automatic.svg
-│ │ ├── bathroom.svg
-│ │ ├── fullyIntegrated.svg
-│ │ ├── gas.svg
-│ │ ├── kitchen.svg
-│ │ ├── line.svg
-│ │ ├── map.svg
-│ │ ├── microwave.svg
-│ │ ├── petrol.svg
-│ │ ├── radio.svg
-│ │ ├── refrigerator.svg
-│ │ ├── star.svg
-│ │ ├── tv.svg
-│ │ ├── van.svg
-│ │ └── water.svg
-│ └── images
-│ └── hero-gb.jpg
+│   ├── icons
+│   │   ├── ac.svg
+│   │   ├── alcove.svg
+│   │   ├── automatic.svg
+│   │   ├── bathroom.svg
+│   │   ├── fullyIntegrated.svg
+│   │   ├── gas.svg
+│   │   ├── kitchen.svg
+│   │   ├── line.svg
+│   │   ├── map.svg
+│   │   ├── microwave.svg
+│   │   ├── petrol.svg
+│   │   ├── radio.svg
+│   │   ├── refrigerator.svg
+│   │   ├── star.svg
+│   │   ├── tv.svg
+│   │   ├── van.svg
+│   │   └── water.svg
+│   └── images
+│       └── hero-gb.jpg
 ├── components
-│ ├── Button
-│ ├── Card
-│ ├── CatalogList
-│ ├── Filters
-│ ├── Location
-│ └── Navigation
+│   ├── Button
+│   ├── Card
+│   ├── CatalogList
+│   ├── Filters
+│   ├── Location
+│   └── Navigation
 ├── pages
-│ ├── CatalogPage
-│ ├── DetailsPage
-│ ├── HomePage
-│ └── NotFoundPage
+│   ├── CatalogPage
+│   ├── DetailsPage
+│   ├── HomePage
+│   └── NotFoundPage
 ├── redux
-│ ├── carsOps.js
-│ ├── carsSlice.js
-│ ├── favoritesSlice.js
-│ ├── filtersSlice.js
-│ ├── listSelectedSlice.js
-│ ├── selectors.js
-│ ├── store.js
-│ └── tabSlice.js
+│   ├── carsOps.js
+│   ├── carsSlice.js
+│   ├── favoritesSlice.js
+│   ├── filtersSlice.js
+│   ├── listSelectedSlice.js
+│   ├── selectors.js
+│   ├── store.js
+│   └── tabSlice.js
 ├── index.css
 └── main.jsx
+```
 
 ⸻
 
