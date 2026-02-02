@@ -1,43 +1,46 @@
-🚐 TravelTrucks (Campers Catalog)
+# 🚐 TravelTrucks (Campers Catalog)
 
 A web application for browsing and filtering camper vans with a detailed view for each vehicle.
 
-The project is built using React, Redux Toolkit, and Vite.
+Built with **React**, **Redux Toolkit**, and **Vite**.
 
-⸻
+---
 
-🔗 Demo
-• 👉 Live demo: https://travel-trucks-henna-sigma.vercel.app/
-• 👉 API: https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers
+## 🔗 Demo
 
-⸻
+- 👉 **Live demo:** https://travel-trucks-henna-sigma.vercel.app/
+- 👉 **API:** https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers
 
-✨ Features
-• 📋 Camper vans catalog
-• 🔍 Filtering by:
-• Location
-• Body type (Van, Fully Integrated, Alcove)
-• Equipment (AC, Kitchen, TV, Bathroom, etc.)
-• 📄 Camper details page
-• ⭐ Rating display
-• 🗺️ Camper location
-• ⚙️ Async data fetching from API
-• ⏳ Loading state & error handling
-• 📱 Responsive design
+---
 
-⸻
+## ✨ Features
 
-🛠️ Tech Stack
-• React
-• Redux Toolkit
-• React Router
-• Axios
-• Vite
-• CSS Modules
-• clsx
-• SVG Icons (SVGR)
+- 📋 Camper vans catalog
+- 🔍 Advanced filtering:
+  - Location
+  - Body type (Van, Fully Integrated, Alcove)
+  - Equipment (AC, Kitchen, TV, Bathroom, etc.)
+- 📄 Camper details page
+- ⭐ Rating display
+- 🗺️ Camper location
+- ⚙️ Async data fetching from API
+- ⏳ Loading state & error handling
+- 📱 Fully responsive design
 
-⸻
+---
+
+## 🛠️ Tech Stack
+
+- React
+- Redux Toolkit
+- React Router
+- Axios
+- Vite
+- CSS Modules
+- clsx
+- SVG Icons (SVGR)
+
+---
 
 ## 📂 Project Structure
 
