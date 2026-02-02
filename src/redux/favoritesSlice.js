@@ -16,7 +16,9 @@ const load = () => {
 const save = (ids) => {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(ids));
-  } catch {}
+  } catch (e) {
+    console.error("Failed to save favorites", e);
+  }
 };
 
 const initialState = {

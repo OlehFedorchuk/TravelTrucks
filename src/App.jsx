@@ -1,4 +1,3 @@
-import "./App.css";
 import Navigation from "./components/Navigation/Navigation";
 
 function App() {
@@ -10,4 +9,3 @@ function App() {
 }
 
 export default App;
-

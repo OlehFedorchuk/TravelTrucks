@@ -13,7 +13,6 @@
     max-width: 292px;
     object-fit: cover;
     border-radius: 14px;
-
 }
 
 .content {
@@ -60,7 +59,6 @@
     align-items: center;
     margin-right: 16px;
     color: #101828;
-
 }
 
 
@@ -69,7 +67,6 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-
     color: #475467
 }
 

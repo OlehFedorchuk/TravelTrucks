@@ -3,7 +3,7 @@
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1312px;
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -142,8 +142,9 @@
 /* LEFT CARD */
 .leftCard {
   border-radius: 16px;
-  padding: 28px;
   min-height: 520px;
+  background-color: #F7F7F7;
+  padding: 52px;
 }
 
 /* FEATURES BADGES */
@@ -220,7 +221,10 @@
   padding: 0;
   margin: 0;
   list-style: none;
+
 }
+
+
 
 .reviewItem {
   display: flex;
@@ -339,7 +343,7 @@
   color: #667085;
 }
 
-/* focus як в UI */
+
 .input:focus,
 .textarea:focus {
   box-shadow: 0 0 0 3px rgba(228, 72, 72, 0.18);
@@ -357,7 +361,7 @@
 
 .dateWrap {
   position: relative;
-    width: 100%;
+  width: 100%;
 }
 
 
@@ -381,9 +385,8 @@
 
 .input[type="date"]::-webkit-calendar-picker-indicator {
   opacity: 0;
- 
-}
 
+}
 
 .datePlaceholder {
   position: absolute;
@@ -406,7 +409,6 @@
 .dateInput:required:valid {
   color: #101828;
 }
-
 
 /* BUTTON */
 .submit {

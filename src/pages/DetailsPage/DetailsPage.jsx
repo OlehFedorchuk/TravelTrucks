@@ -65,7 +65,7 @@ const DetailsPage = () => {
       water: WaterIcon,
       gas: GasIcon,
     }),
-    []
+    [],
   );
 
   const minDate = useMemo(() => {
@@ -242,7 +242,10 @@ const DetailsPage = () => {
       setTouched({ name: false, email: false, date: false });
       setErrors({ name: "", email: "", date: "" });
     } catch {
-      setNotice({ type: "error", text: "Something went wrong. Please try again." });
+      setNotice({
+        type: "error",
+        text: "Something went wrong. Please try again.",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -339,10 +342,12 @@ const DetailsPage = () => {
                 ) : (
                   <ul className={css.reviewsList}>
                     {reviews.map((r, idx) => {
-                      console.log('reviews', reviews)
                       const rating5 = clampRating(r?.reviewer_rating);
-                      const stars = "★".repeat(rating5) + "☆".repeat(5 - rating5);
-                      const initial = (r?.reviewer_name?.[0] || "?").toUpperCase();
+                      const stars =
+                        "★".repeat(rating5) + "☆".repeat(5 - rating5);
+                      const initial = (
+                        r?.reviewer_name?.[0] || "?"
+                      ).toUpperCase();
 
                       return (
                         <li key={r?.id ?? idx} className={css.reviewItem}>
@@ -350,7 +355,9 @@ const DetailsPage = () => {
                             <div className={css.avatar}>{initial}</div>
 
                             <div className={css.reviewMeta}>
-                              <p className={css.reviewName}>{r?.reviewer_name}</p>
+                              <p className={css.reviewName}>
+                                {r?.reviewer_name}
+                              </p>
                               <div className={css.reviewStarsRow}>
                                 <span className={css.reviewStars}>{stars}</span>
                               </div>
@@ -378,7 +385,7 @@ const DetailsPage = () => {
                 <input
                   className={clsx(
                     css.input,
-                    errors.name && touched.name && css.inputError
+                    errors.name && touched.name && css.inputError,
                   )}
                   type="text"
                   name="name"
@@ -398,7 +405,7 @@ const DetailsPage = () => {
                 <input
                   className={clsx(
                     css.input,
-                    errors.email && touched.email && css.inputError
+                    errors.email && touched.email && css.inputError,
                   )}
                   type="email"
                   name="email"
@@ -428,7 +435,7 @@ const DetailsPage = () => {
                     className={clsx(
                       css.input,
                       css.dateInput,
-                      errors.date && touched.date && css.inputError
+                      errors.date && touched.date && css.inputError,
                     )}
                     type="date"
                     name="date"
@@ -457,7 +464,11 @@ const DetailsPage = () => {
                 disabled={isSubmitting}
               />
 
-              <button className={css.submit} type="submit" disabled={isSubmitting}>
+              <button
+                className={css.submit}
+                type="submit"
+                disabled={isSubmitting}
+              >
                 {isSubmitting ? "Booking..." : "Send"}
               </button>
 
@@ -467,7 +478,7 @@ const DetailsPage = () => {
                     css.notice,
                     notice.type === "success"
                       ? css.noticeSuccess
-                      : css.noticeError
+                      : css.noticeError,
                   )}
                   role="status"
                   aria-live="polite"
@@ -484,4 +495,3 @@ const DetailsPage = () => {
 };
 
 export default DetailsPage;
-

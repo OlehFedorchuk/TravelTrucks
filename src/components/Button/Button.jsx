@@ -3,7 +3,7 @@ import css from "./Button.module.css";
 
 const Button = ({ children, type = "button", className, ...props }) => {
   return (
-    <button type={type} className={clsx(css.heroBtn)}{...props}>
+    <button type={type} className={clsx(css.heroBtn, className)} {...props}>
       {children}
     </button>
   );

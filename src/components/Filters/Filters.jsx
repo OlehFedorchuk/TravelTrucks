@@ -11,8 +11,8 @@ import VanIcon from "../../assets/icons/van.svg?react";
 import FullyIntegratedIcon from "../../assets/icons/fullyIntegrated.svg?react";
 import AlcoveIcon from "../../assets/icons/alcove.svg?react";
 import LineIcon from "../../assets/icons/line.svg?react";
-
 import Button from "../Button/Button";
+import { fetchCars } from "../../redux/carsOps";
 
 import {
   applyFilters,
@@ -21,8 +21,6 @@ import {
   selectIsApplied,
   selectCarsLimit,
 } from "../../redux/carsSlice";
-
-import { fetchCars } from "../../redux/carsOps";
 
 import {
   toggleEquipment,
@@ -39,7 +37,6 @@ const Filters = () => {
   const equipment = useSelector(selectEquipmentFilters);
   const bodyType = useSelector(selectBodyType);
   const filters = useSelector(selectFilters);
-
   const isApplied = useSelector(selectIsApplied);
   const limit = useSelector(selectCarsLimit);
 
@@ -146,7 +143,7 @@ const Filters = () => {
               type="button"
               className={clsx(
                 css.item,
-                bodyType === "FullyIntegrated" && css.itemActive
+                bodyType === "FullyIntegrated" && css.itemActive,
               )}
               onClick={() => dispatch(setBodyType("FullyIntegrated"))}
             >
@@ -158,7 +155,10 @@ const Filters = () => {
           <li>
             <button
               type="button"
-              className={clsx(css.item, bodyType === "Alcove" && css.itemActive)}
+              className={clsx(
+                css.item,
+                bodyType === "Alcove" && css.itemActive,
+              )}
               onClick={() => dispatch(setBodyType("Alcove"))}
             >
               <AlcoveIcon className={css.icon} />
