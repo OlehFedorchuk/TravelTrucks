@@ -75,7 +75,9 @@ const CatalogList = () => {
   return (
     <div className={css.wrapper}>
       {showEmpty && (
-        <p className={css.message}>Нічого не знайдено за цими фільтрами.</p>
+        <p className={css.message}>
+          No results found for the selected filters.
+        </p>
       )}
 
       <ul className={css.list}>
